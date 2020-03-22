@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
+    id "org.flywaydb.flyway" version "6.0.8"
 }
 
 group = 'org.jun'
@@ -33,4 +34,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+flyway {
+    url = 'jdbc:mysql://localhost:3306/todo?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false'
+    user = 'todouser'
+    password = 'todopass'
 }
