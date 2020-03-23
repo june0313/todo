@@ -2,7 +2,6 @@ plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
-    id "org.flywaydb.flyway" version "6.0.8"
 }
 
 group = 'org.jun'
@@ -25,6 +24,7 @@ dependencies {
     implementation 'org.flywaydb:flyway-core'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'mysql:mysql-connector-java'
+    testRuntimeOnly 'com.h2database:h2'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
@@ -34,10 +34,4 @@ dependencies {
 
 test {
     useJUnitPlatform()
-}
-
-flyway {
-    url = 'jdbc:mysql://localhost:3306/todo?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false'
-    user = 'todouser'
-    password = 'todopass'
 }
