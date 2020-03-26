@@ -15,4 +15,10 @@ public class ProjectService {
                 .map(ProjectDto::fromEntity)
                 .orElseThrow(ProjectNotFoundException::new);
     }
+
+    ProjectDto createProject(ProjectCreationRequestDto requestDto) {
+        Project newProject = new Project(requestDto.getTitle());
+        projectRepository.save(newProject);
+        return ProjectDto.fromEntity(newProject);
+    }
 }
