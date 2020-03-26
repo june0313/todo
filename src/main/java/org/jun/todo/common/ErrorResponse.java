@@ -1,10 +1,10 @@
-package org.jun.todo.project;
+package org.jun.todo.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-class ErrorResponse {
+public class ErrorResponse {
     private String message;
 }
