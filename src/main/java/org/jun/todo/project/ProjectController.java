@@ -1,6 +1,7 @@
 package org.jun.todo.project;
 
-import org.springframework.http.ResponseEntity;
+import org.jun.todo.common.Response;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,14 +18,15 @@ public class ProjectController {
     }
 
     @GetMapping(value = "/projects/{id}")
-    public ResponseEntity<ProjectDto> getProject(@PathVariable @Min(1) Long id) {
+    public Response<ProjectDto> getProject(@PathVariable @Min(1) Long id) {
         ProjectDto projectDto = projectService.findById(id);
-        return ResponseEntity.ok(projectDto);
+        return Response.success(projectDto);
     }
 
     @PostMapping(value = "/projects")
-    public ResponseEntity<ProjectDto> createProject(@RequestBody @Valid ProjectCreationRequestDto requestDto) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public Response<ProjectDto> createProject(@RequestBody @Valid ProjectCreationRequestDto requestDto) {
         ProjectDto projectDto = projectService.createProject(requestDto);
-        return ResponseEntity.ok(projectDto);
+        return Response.success(projectDto);
     }
 }
