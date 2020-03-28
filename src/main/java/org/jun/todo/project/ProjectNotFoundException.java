@@ -1,4 +1,4 @@
 package org.jun.todo.project;
 
-class ProjectNotFoundException extends RuntimeException {
+public class ProjectNotFoundException extends RuntimeException {
 }
